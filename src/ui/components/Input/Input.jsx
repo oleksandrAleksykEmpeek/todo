@@ -1,6 +1,8 @@
+import './Input.scss';
+
 const Input = ({ formik, name, type }) => {
   return (
-    <>
+    <div className="input">
       <input
         id={name}
         name={name}
@@ -9,8 +11,8 @@ const Input = ({ formik, name, type }) => {
         onBlur={formik.handleBlur}
         value={formik.values[name]}
       />
-      <p>{formik.errors[name]}</p>
-    </>
+      {formik.errors[name] && <p className="error">{formik.errors[name]}</p>}
+    </div>
   );
 };
 
