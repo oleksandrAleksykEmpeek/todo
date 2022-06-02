@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { paths } from '../../../constants/paths';
 
 const PrivateRoute = ({ component }) => {
-  const [isAuth, setAuth] = useState(true);
+  const { isAuth } = useSelector(state => state.auth);
   const navigate = useNavigate();
   const { LOGIN } = paths;
 
