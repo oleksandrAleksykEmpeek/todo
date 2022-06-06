@@ -7,7 +7,6 @@ const PrivateRoute = ({ component }) => {
   const { isAuth } = useSelector(state => state.auth);
   const navigate = useNavigate();
   const { LOGIN } = paths;
-
   useEffect(() => {
     if (!isAuth) navigate(LOGIN);
   }, []);

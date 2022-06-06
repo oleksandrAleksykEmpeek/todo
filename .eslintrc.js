@@ -7,7 +7,7 @@ module.exports = {
   ignorePatterns: [".eslintrc.js"],
   plugins: ["prettier", "react"],
   rules: {
-    "prettier/prettier": "error",
+    "prettier/prettier": "warn",
   },
   overrides: [
     {
