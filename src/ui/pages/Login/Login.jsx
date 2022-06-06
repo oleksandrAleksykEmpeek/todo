@@ -4,12 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 
 import Input from '../../components/Input/Input';
-
-import { login, setAuthState } from '../../../store/auth';
+import { ThunkLoginUser } from '../../../store/auth/thunk/loginUser';
 import { initialValues, validate } from './form';
 
 import './Login.scss';
-import { ThunkLoginUser } from '../../../store/auth/thunk/loginUser';
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -25,12 +23,7 @@ const Login = () => {
   });
 
   useEffect(() => {
-    console.log(isAuth);
-    if (isAuth) {
-      console.log('user logged in');
-      navigate('/');
-    }
-    console.log('user not logged in');
+    isAuth && navigate('/');
   }, [isAuth]);
   return (
     <form onSubmit={formik.handleSubmit} className="loginForm">
