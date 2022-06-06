@@ -1,3 +1,4 @@
 import { apiService } from '../apiService';
 
-export const authLogin = async () => apiService('/users', 'get');
+export const login = async ({ email, password }) =>
+  apiService(`/users?email=${email}&password=${password}`, 'get');

@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { apiService } from '../../service/apiService';
-import { thunkLogin } from './thunk/login';
-import api from '../../service/index';
+
+import { ActionSetAuthState } from './actions/setAuthState';
+import { ThunkLoginUser } from './thunk/loginUser';
+
 export const auth = createSlice({
   name: 'auth',
   initialState: {
@@ -9,14 +10,16 @@ export const auth = createSlice({
   },
   reducers: {
     setAuthState: (state, action) => {
-      console.log('setAuthState' + action.payload);
-      state.isAuth = action.payload;
+      ActionSetAuthState(state, action.payload);
     },
-    selectState: state => state.isAuth,
-    login: () => {},
+  },
+  extraReducers: builder => {
+    builder.addCase(ThunkLoginUser.fulfilled, (state, action) => {
+      ActionSetAuthState(state, action.payload);
+    });
   },
 });
 
-export const { setAuthState, selectState, login } = auth.actions;
+export const { setAuthState } = auth.actions;
 
 export default auth.reducer;
