@@ -13,6 +13,7 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isAuth } = useSelector(state => state.auth);
+  const isLoggedIn = sessionStorage.getItem('isLoggedIn');
 
   const formik = useFormik({
     initialValues,
@@ -23,8 +24,8 @@ const Login = () => {
   });
 
   useEffect(() => {
-    isAuth && navigate('/');
-  }, [isAuth]);
+    isLoggedIn && navigate('/');
+  }, [isAuth, isLoggedIn]);
   return (
     <form onSubmit={formik.handleSubmit} className="loginForm">
       <h2>Login</h2>
