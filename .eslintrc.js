@@ -5,7 +5,7 @@ module.exports = {
   },
   extends: ['prettier'],
   ignorePatterns: ['.eslintrc.js'],
-  plugins: ['prettier', 'react'],
+  plugins: ['prettier', 'react', 'jsx'],
   rules: {
     'prettier/prettier': 'warn',
   },
@@ -17,7 +17,7 @@ module.exports = {
       },
     },
   ],
-  parser: 'babel-eslint',
+  parser: '@babel/eslint-parser',
   parserOptions: {
     sourceType: 'module',
   },
