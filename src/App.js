@@ -1,18 +1,27 @@
+import { useEffect, useState } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import { Provider } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import AppRoutes from './ui/routes/Routes';
-import store from './store';
+import Layout from './ui/components/Layout/Layout';
+
+import { useSessionStorage } from './utils/getSessionStorage';
+
 import './ui/assets/styles/styles.scss';
 
 function App() {
+  const [isLoggedIn, setLoggedIn] = useState(false);
+  const isAuth = useSelector(state => state.auth.isAuth);
+
+  useEffect(() => {
+    setLoggedIn(useSessionStorage('isLoggedIn'));
+  }, [isAuth]);
   return (
     <div className="app">
-      <Provider store={store}>
-        <BrowserRouter>
-          <AppRoutes />
-        </BrowserRouter>
-      </Provider>
+      <BrowserRouter>
+        {isLoggedIn && <Layout />}
+        <AppRoutes />
+      </BrowserRouter>
     </div>
   );
 }

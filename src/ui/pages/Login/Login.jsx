@@ -6,6 +6,7 @@ import { useFormik } from 'formik';
 import Input from '../../components/Input/Input';
 import { ThunkLoginUser } from '../../../store/auth/thunk/loginUser';
 import { initialValues, validate } from './form';
+import { useSessionStorage } from '../../../utils/getSessionStorage';
 
 import './Login.scss';
 
@@ -13,7 +14,7 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isAuth } = useSelector(state => state.auth);
-  const isLoggedIn = sessionStorage.getItem('isLoggedIn');
+  const isLoggedIn = useSessionStorage('isLoggedIn');
 
   const handleSubmit = ({ email, password }) => {
     dispatch(ThunkLoginUser({ email, password }));
