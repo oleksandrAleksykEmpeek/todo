@@ -15,12 +15,14 @@ const Login = () => {
   const { isAuth } = useSelector(state => state.auth);
   const isLoggedIn = sessionStorage.getItem('isLoggedIn');
 
+  const handleSubmit = ({ email, password }) => {
+    dispatch(ThunkLoginUser({ email, password }));
+  };
+
   const formik = useFormik({
     initialValues,
     validationSchema: validate,
-    onSubmit: () => {
-      dispatch(ThunkLoginUser({ email: formik.values.email, password: formik.values.password }));
-    },
+    onSubmit: handleSubmit,
   });
 
   useEffect(() => {
