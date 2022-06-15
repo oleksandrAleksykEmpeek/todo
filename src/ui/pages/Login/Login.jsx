@@ -28,6 +28,7 @@ const Login = () => {
   useEffect(() => {
     isLoggedIn && navigate('/');
   }, [isAuth, isLoggedIn]);
+
   return (
     <form onSubmit={formik.handleSubmit} className="loginForm">
       <h2>Login</h2>
