@@ -5,8 +5,6 @@ import { useSelector } from 'react-redux';
 import AppRoutes from './ui/routes/Routes';
 import Layout from './ui/components/Layout/Layout';
 
-import { useSessionStorage } from './utils/getSessionStorage';
-
 import './ui/assets/styles/styles.scss';
 
 function App() {
@@ -14,15 +12,20 @@ function App() {
   const isAuth = useSelector(state => state.auth.isAuth);
 
   useEffect(() => {
-    setLoggedIn(useSessionStorage('isLoggedIn'));
+    const loggedIn = sessionStorage.getItem('isLoggedIn');
+    setLoggedIn(loggedIn);
   }, [isAuth]);
   return (
-    <div className="app">
-      <BrowserRouter>
-        {isLoggedIn && <Layout />}
-        <AppRoutes />
-      </BrowserRouter>
-    </div>
+    <BrowserRouter>
+      <div className="app">
+        {isLoggedIn && (
+          <Layout>
+            <AppRoutes />
+          </Layout>
+        )}
+        {!isLoggedIn && <AppRoutes />}
+      </div>
+    </BrowserRouter>
   );
 }
 

@@ -1,0 +1,42 @@
+@import '../../../../assets/styles/colors.scss';
+
+.sidebar {
+    height: 100%;
+
+    background-color: $color-active-2;
+
+    .sidebar-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        margin: 15px 15px;
+        padding: 0px 5px;
+
+        border-radius: 5px;
+        cursor: pointer;
+
+        transition: .15s ease-in-out;
+
+        h3 {
+            margin-right: 25px;
+            font-weight: 400;
+            font-size: 15px;
+        }
+
+        img {
+            padding: 10px;
+        }
+
+        &:hover {
+            background-color: $color-active;
+            color: $color-white;
+        }
+
+    }
+
+    .sidebar-item-active {
+        background-color: $color-active;
+        color: $color-white;
+    }
+}
