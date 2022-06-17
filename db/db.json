@@ -1,8 +1,18 @@
 {
   "users": [
-      {
-          "email": "oleksandr.aleksyk@gmail.com", 
-          "password": "Password@123"
-      }
+    {
+      "id": 1,
+      "email": "oleksandr.aleksyk@gmail.com",
+      "password": "Password@123",
+      "firstName": "Oleksandr",
+      "lastName": "Aleksyk"
+    }
+  ],
+  "tasks": [
+    {
+      "id": 1, 
+      "userId": 1,
+      "text": "Go to wet"
+    }
   ]
 }

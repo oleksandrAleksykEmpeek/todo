@@ -1,4 +1,5 @@
-export const ActionSetAuthState = (state, payload) => {
-  state.isAuth = payload;
-  sessionStorage.setItem('isLoggedIn', payload);
+export const ActionSetAuthState = (state, {status, userId}) => {
+  state.isAuth = status;
+  sessionStorage.setItem('isLoggedIn', status);
+  sessionStorage.setItem('userId', userId)
 };

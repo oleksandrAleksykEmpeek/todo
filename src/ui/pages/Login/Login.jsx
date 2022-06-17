@@ -5,6 +5,8 @@ import { useFormik } from 'formik';
 
 import Input from '../../components/Input/Input';
 import { ThunkLoginUser } from '../../../store/auth/thunk/loginUser';
+import { ActionSetUser } from '../../../store/user/actions';
+
 import { initialValues, validate } from './form';
 
 import './Login.scss';
@@ -15,8 +17,9 @@ const Login = () => {
   const { isAuth } = useSelector(state => state.auth);
   const isLoggedIn = sessionStorage.getItem('isLoggedIn');
 
-  const handleSubmit = ({ email, password }) => {
-    dispatch(ThunkLoginUser({ email, password }));
+  const handleSubmit = async ({ email, password }) => {
+    const { payload } = await dispatch(ThunkLoginUser({ email, password }));
+    dispatch(ActionSetUser(payload[0]))
   };
 
   const formik = useFormik({

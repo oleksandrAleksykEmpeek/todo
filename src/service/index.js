@@ -1,4 +1,9 @@
 import * as auth from './auth';
-export default {
+import * as tasks from './tasks';
+
+const api = {
   auth,
+  tasks,
 };
+
+export default api;

@@ -2,7 +2,7 @@ import burgerIcon from '../../../../assets/icons/burgerIcon.svg';
 import accountIcon from '../../../../assets/icons/accountIcon.svg';
 import './Navbar.scss';
 
-const Navbar = ({ toggleSidebar }) => (
+const Navbar = ({ toggleSidebar, name }) => (
   <div className="navbar">
     <div className="navbar-menu-toggler">
       <img
@@ -16,7 +16,7 @@ const Navbar = ({ toggleSidebar }) => (
     </div>
 
     <div className="navbar-profile">
-      <h3>Oleksandr</h3>
+      <h3>{name}</h3>
       <img src={accountIcon} alt="Profile" />
     </div>
   </div>
